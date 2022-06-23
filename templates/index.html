@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+
+  
+<style>
+  h1{
+    color:rgb(5, 5, 0);
+    text-align: center;
+    font-size: 50px;
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+  }
+  body{
+    background-color: turquoise;
+  }
+  
+  form input{
+    text-align: center;
+    margin-bottom:20px ;
+    padding: 10px 40px;
+    border-radius: 10px;
+  }
+
+  form button{
+    padding:  5px 10px;
+    border-radius: 10px;
+  }
+
+  .login{
+    text-align: center;
+  }
+
+  .pred{
+    background-color: rgb(210, 202, 202);
+    padding: 10px 20px;
+    border-radius: 80px;
+  }
+
+  body{
+    background-image: url(/static/bg1.jpg);
+    image-resolution: 1080 px;
+    background-repeat: no-repeat;
+  }
+
+</style>
+
+</head>
+
+<body>
+ <div class="login">
+	<h1>FRP BOND STRENGTH PREDICTION</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="cement" placeholder="Enter the Cement Value" required="required" />
+      <input type="text" name="blast_furnace_slag" placeholder="Blast Furnace Slag Value" required="required" />
+      <input type="text" name="fly_ash" placeholder="Enter Fly Ash Value" required="required" />
+      <input type="text" name="water" placeholder="Enter Water Value" required="required" />
+      <input type="text" name="superplasticizer" placeholder="Superplasticizer Value" required="required" />
+      <input type="text" name="coarse_aggregate" placeholder="Coarse Aggregate Value" required="required" />
+      <input type="text" name="fine_aggregate" placeholder="Enter Fine Aggregate Value" required="required" />
+      <input type="text" name="age" placeholder="Enter Age Value" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+    <div class="pred">
+      {{ prediction_text }}
+    </div>
+
+ </div>
+
+
+</body>
+</html>
+
+    
